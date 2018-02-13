@@ -1,0 +1,24 @@
+{
+  "name": "forge-parker-poc",
+  "description": "",
+  "repository": "https://github.com/jaimerosales/forge-parker-poc",
+  "logo": "https://avatars0.githubusercontent.com/u/8017462?v=3&s=200",
+  "keywords": [
+    "express",
+    "framework",
+    "autodesk",
+    "forge",
+    "template",
+    "Viewer"
+  ],
+  "env": {
+    "FORGE_CLIENT_ID": {
+      "description": "Forge Client ID"
+    },
+    "FORGE_CLIENT_SECRET": {
+      "description": "Forge Client Secret"
+    }
+  },
+  "website": "https://developer.autodesk.com/",
+  "success_url": "/"
+}
