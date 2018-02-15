@@ -4,16 +4,16 @@ function markup3d(viewer, options) {
 
     this.scale =
         this.particleCount = 20;
-    this.size = 50.0;
+    this.size = 1000.0;
     this.particles;
     this.msgs = [];
     this.raycaster = new THREE.Raycaster;
-    this.scene = viewer.impl.sceneAfter;
+    this.scene = viewer.impl.scene;
     this.cursor = new THREE.Object3D( 0, 0, 0 );
     this.mouse = {x:0, y:0, button:0};
     this.raycaster = new THREE.Raycaster();
     this.camera = viewer.impl.camera;
-    this.raycaster.params.PointCloud.threshold = 0.3;
+    this.raycaster.params.PointCloud.threshold = 300;
 
 
     this.vertexShader = `
@@ -75,8 +75,8 @@ markup3d.prototype.load = function() {
                 vertexColors: THREE.VertexColors,
                 fragmentShader: this.fragmentShader,
                 vertexShader: this.vertexShader,
-                depthWrite: false,
-                depthTest: false,
+                depthWrite: true,
+                depthTest: true,
                 uniforms: {
                     size: { type: "f", value: this.size },
                     tex: { type: "t", value: texture }
@@ -96,12 +96,21 @@ markup3d.prototype.load = function() {
         this.geometry = new THREE.Geometry();
         const types = ["Issue", "BIMIQ_Warning", "RFI", "BIMIQ_Hazard"];
 
-        data.map(item => {
-            point = (new THREE.Vector3(item.x, item.y, item.z));
-        this.geometry.vertices.push(point);
-        var type = types.indexOf(item.type);
-        this.geometry.colors.push(new THREE.Color(1.0,type,0));
-    });
+                data.map(item => {
+                    point = (new THREE.Vector3(item.x, item.y, item.z));
+                    this.geometry.vertices.push(point);
+                    var type = types.indexOf(item.type);
+                    this.geometry.colors.push(new THREE.Color(1.0,type,0));
+                });
+
+        // let i;
+        // for (i=0;i<100;i++) {
+        //     point = (new THREE.Vector3(Math.random()*10000-5000, Math.random()*10000-5000, Math.random()*10000-5000));
+        //     this.geometry.vertices.push(point);
+        //     this.geometry.colors.push(new THREE.Color(1.0,2,0));
+        // }
+
+
         this.initPointCloud();
     };
 

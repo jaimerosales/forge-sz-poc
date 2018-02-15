@@ -26,6 +26,15 @@ var options = {
 
 var loadDocument = null;
 
+var data = {
+    "Items": [{
+        "x": 1100.37674052735037833,
+        "y": -95.0107518497603,
+        "z": -402.620531023927,
+        "type": "RFI"
+    }]
+} ;
+
 Autodesk.Viewing.Initializer(options, function onInitialized() {
     Autodesk.Viewing.Document.load(options.documentId, onDocumentLoadSuccess, onDocumentLoadFailure);
 });
@@ -59,6 +68,11 @@ function onDocumentLoadSuccess(doc) {
 
     var viewerDiv = document.getElementById('viewerDiv');
 
+    window.addEventListener("onPointClick", function(){
+        console.log("Point Clicked");
+        var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
+        window.open(url);
+    }, false);
 
     ///////////////USE ONLY ONE OPTION AT A TIME/////////////////////////
 
@@ -71,7 +85,6 @@ function onDocumentLoadSuccess(doc) {
     //////////////////////////////////////////////////////////////////////
 
     viewer.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError);
-    viewer.loadExtension("markup3d");
     viewer.setBackgroundColor(35, 31, 32, 35, 31, 32);
 
 }
@@ -90,6 +103,9 @@ function onDocumentLoadFailure(viewerErrorCode) {
  * It may trigger before any geometry has been downloaded and displayed on-screen.
  */
 function onLoadModelSuccess(model) {
+    viewer.loadExtension("markup3d");
+    viewer.addEventListener(Autodesk.Viewing.GEOMETRY_LOADED_EVENT, onGeometryLoadedHandler);
+
     console.log('onLoadModelSuccess()!');
     console.log('Validate model loaded: ' + (viewer.model === model));
     console.log(model);
@@ -103,6 +119,18 @@ function onLoadModelError(viewerErrorCode) {
     console.error('onLoadModelError() - errorCode:' + viewerErrorCode);
 }
 
+/**
+ * Geometry Loader Listener
+ */
+function onGeometryLoadedHandler(event) {
+    console.log("Geo loaded", data);
+    window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
+
+    viewer.removeEventListener(
+        Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
+        onGeometryLoadedHandler);
+
+}
 
 
 //
@@ -126,22 +154,14 @@ function onLoadModelError(viewerErrorCode) {
 
 
 
-//
-//
+// //
+// // Engine
 // data = {
 //     "Items": [{
-//         "markupId": 1510110198178253,
-//         "x": 0,
-//         "y": 0,
-//         "z": 0,
-//         "type": "RFI",
-//     }, {
-//         "markupId": 1510110198178253,
-//         "x": 10,
-//         "y": 10,
-//         "z": 10,
-//         "type": "RFI",
+//         "x": 1100.37674052735037833,
+//         "y": -95.0107518497603,
+//         "z": -402.620531023927,
+//         "type": "RFI"
 //     }]
 // } ;
-//
 // window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
