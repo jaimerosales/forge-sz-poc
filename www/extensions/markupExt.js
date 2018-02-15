@@ -4,7 +4,7 @@ function markup3d(viewer, options) {
 
     this.scale =
         this.particleCount = 20;
-    this.size = 1000.0;
+    this.size = 900.0;
     this.particles;
     this.msgs = [];
     this.raycaster = new THREE.Raycaster;
