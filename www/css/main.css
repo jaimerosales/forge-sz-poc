@@ -12,3 +12,10 @@
 .logo-size{
     width:75%;
 }
+
+.circle-node{
+    position: absolute;
+    top: 200px;
+    left: 300px;
+    z-index: 2;
+}

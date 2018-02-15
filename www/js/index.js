@@ -71,7 +71,9 @@ function onDocumentLoadSuccess(doc) {
     //////////////////////////////////////////////////////////////////////
 
     viewer.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError);
+    viewer.loadExtension("markup3d");
     viewer.setBackgroundColor(35, 31, 32, 35, 31, 32);
+
 }
 
 
@@ -100,3 +102,46 @@ function onLoadModelSuccess(model) {
 function onLoadModelError(viewerErrorCode) {
     console.error('onLoadModelError() - errorCode:' + viewerErrorCode);
 }
+
+
+
+//
+// data = {
+//     "Items": [{
+//         "markupId": 1510110198178253,
+//         "x": -6.67074966430664,
+//         "y": 0.0718488693237305,
+//         "z": 15.8761157989502,
+//         "type": "Issue",
+//     }, {
+//         "markupId": 1510110198178253,
+//         "x": -5.26823234558105,
+//         "y": -0.0148783922195435,
+//         "z": 9.35631656646729,
+//         "type": "Issue",
+//     }]
+// } ;
+//
+// window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
+
+
+
+//
+//
+// data = {
+//     "Items": [{
+//         "markupId": 1510110198178253,
+//         "x": 0,
+//         "y": 0,
+//         "z": 0,
+//         "type": "RFI",
+//     }, {
+//         "markupId": 1510110198178253,
+//         "x": 10,
+//         "y": 10,
+//         "z": 10,
+//         "type": "RFI",
+//     }]
+// } ;
+//
+// window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
