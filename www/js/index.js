@@ -28,10 +28,23 @@ var loadDocument = null;
 
 var data = {
     "Items": [{
+        "markupId": 1,
         "x": 1100.37674052735037833,
         "y": -95.0107518497603,
         "z": -402.620531023927,
-        "type": "RFI"
+        "type": "BIMIQ_Warning"
+    }, {
+        "markupId": 2,
+        "x": 201.95253612923999,
+        "y": 1843.3121015846427,
+        "z": 1050.1132431164415,
+        "type": "BIMIQ_Warning",
+    }, {
+        "markupId": 3,
+        "x": 403.0419596808389,
+        "y": -1947.9918734596254,
+        "z": 1228.7535747854722,
+        "type": "BIMIQ_Warning",
     }]
 } ;
 
@@ -68,10 +81,23 @@ function onDocumentLoadSuccess(doc) {
 
     var viewerDiv = document.getElementById('viewerDiv');
 
-    window.addEventListener("onPointClick", function(){
-        console.log("Point Clicked");
-        var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
-        window.open(url);
+    window.addEventListener("onPointClick", function(e){
+
+        if (e.detail === 1){
+            var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
+            window.open(url);
+        }
+
+        if (e.detail === 2){
+            var url = "http://ph.parker.com/us/en/high-pressure-aluminum-pumps-model-505";
+            window.open(url);
+        }
+
+        if (e.detail === 3){
+            var url = "http://ph.parker.com/us/en/280-series-powershift-hydraulic-10-bolt-power-take-off-pto";
+            window.open(url);
+        }
+
     }, false);
 
     ///////////////USE ONLY ONE OPTION AT A TIME/////////////////////////
@@ -135,19 +161,17 @@ function onGeometryLoadedHandler(event) {
 
 //
 // data = {
-//     "Items": [{
-//         "markupId": 1510110198178253,
-//         "x": -6.67074966430664,
-//         "y": 0.0718488693237305,
-//         "z": 15.8761157989502,
-//         "type": "Issue",
-//     }, {
-//         "markupId": 1510110198178253,
-//         "x": -5.26823234558105,
-//         "y": -0.0148783922195435,
-//         "z": 9.35631656646729,
-//         "type": "Issue",
-//     }]
+// "Items": [{
+//     "x": 1100.37674052735037833,
+//     "y": -95.0107518497603,
+//     "z": -402.620531023927,
+//     "type": "RFI"
+// }, {
+//     "x": 101.95253612923999,
+//     "y": 1343.3121015846427,
+//     "z": 550.1132431164415,
+//     "type": "Issue",
+// }]
 // } ;
 //
 // window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
@@ -165,3 +189,5 @@ function onGeometryLoadedHandler(event) {
 //     }]
 // } ;
 // window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
+
+

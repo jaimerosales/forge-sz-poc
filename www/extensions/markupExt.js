@@ -103,6 +103,7 @@ markup3d.prototype.load = function() {
                     this.geometry.colors.push(new THREE.Color(1.0,type,0));
                 });
 
+        // TEST OF RANDOM 100 Points
         // let i;
         // for (i=0;i<100;i++) {
         //     point = (new THREE.Vector3(Math.random()*10000-5000, Math.random()*10000-5000, Math.random()*10000-5000));
