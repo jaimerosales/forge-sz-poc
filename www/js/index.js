@@ -17,6 +17,7 @@
 /////////////////////////////////////////////////////////////////////////////////
 
 var viewer;
+var viewer2;
 var options = {
     env: 'AutodeskProduction',
     getAccessToken: getForgeToken,
@@ -59,7 +60,7 @@ Autodesk.Viewing.Initializer(options, function onInitialized() {
  */
 function onDocumentLoadSuccess(doc) {
 
-    loadDocument = doc;
+    // loadDocument = doc;
 
     // A document contains references to 3D and 2D viewables.
     var viewable = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {
@@ -81,38 +82,72 @@ function onDocumentLoadSuccess(doc) {
 
     var viewerDiv = document.getElementById('viewerDiv');
 
+
     window.addEventListener("onPointClick", function(e){
 
         if (e.detail === 1){
-            var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
-            window.open(url);
+            // var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
+            // window.open(url);
+            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
         }
 
         if (e.detail === 2){
-            var url = "http://ph.parker.com/us/en/high-pressure-aluminum-pumps-model-505";
-            window.open(url);
+            // var url = "http://ph.parker.com/us/en/high-pressure-aluminum-pumps-model-505";
+            // window.open(url);
+            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
         }
 
         if (e.detail === 3){
-            var url = "http://ph.parker.com/us/en/280-series-powershift-hydraulic-10-bolt-power-take-off-pto";
-            window.open(url);
+            // var url = "http://ph.parker.com/us/en/280-series-powershift-hydraulic-10-bolt-power-take-off-pto";
+            // window.open(url);
+            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
         }
 
     }, false);
 
     ///////////////USE ONLY ONE OPTION AT A TIME/////////////////////////
 
-    /////////////////////// Headless Viewer /////////////////////////////
-    // viewer = new Autodesk.Viewing.Viewer3D(viewerDiv);
-    //////////////////////////////////////////////////////////////////////
 
     //////////////////Viewer with Autodesk Toolbar///////////////////////
     viewer = new Autodesk.Viewing.Private.GuiViewer3D(viewerDiv);
     //////////////////////////////////////////////////////////////////////
 
     viewer.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError);
-    viewer.setBackgroundColor(35, 31, 32, 35, 31, 32);
 
+    //viewer.setBackgroundColor(35, 31, 32, 35, 31, 32);
+
+}
+
+
+
+function loadViewer2(urn2) {
+
+    Autodesk.Viewing.Document.load(urn2, function SecondViewerSuccess(doc2)
+    {
+
+        var viewable = Autodesk.Viewing.Document.getSubItemsWithProperties(doc2.getRootItem(), {
+            'type': 'geometry'
+        }, true);
+        if (viewable.length === 0) {
+            console.error('Document contains no viewables.');
+            return;
+        }
+
+        // Choose any of the available viewable
+        var initialViewable = viewable[0];
+        var svfUrl = doc2.getViewablePath(initialViewable);
+
+
+        var modelOptions = {
+            sharedPropertyDbPath: doc2.getPropertyDbPath()
+        };
+
+        var viewerDiv2 = document.getElementById('viewerDiv2');
+        /////////////////////// Headless Viewer /////////////////////////////
+        viewer2 = new Autodesk.Viewing.Viewer3D(viewerDiv2);
+        //////////////////////////////////////////////////////////////////////
+        viewer2.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError)
+    },onDocumentLoadFailure);
 }
 
 

@@ -4,7 +4,7 @@ function markup3d(viewer, options) {
 
     this.scale =
         this.particleCount = 20;
-    this.size = 900.0;
+    this.size = 1000.0;
     this.particles;
     this.msgs = [];
     this.raycaster = new THREE.Raycaster;
@@ -13,7 +13,7 @@ function markup3d(viewer, options) {
     this.mouse = {x:0, y:0, button:0};
     this.raycaster = new THREE.Raycaster();
     this.camera = viewer.impl.camera;
-    this.raycaster.params.PointCloud.threshold = 300;
+    this.raycaster.params.PointCloud.threshold = 150;
 
 
     this.vertexShader = `
@@ -46,8 +46,8 @@ markup3d.prototype.constructor = markup3d;
 // https://stackoverflow.com/questions/28209645/raycasting-involving-individual-points-in-a-three-js-pointcloud
 markup3d.prototype.updateHoverCursor = function(event) {
     if (!this.particles) return;
-    var x = ( event.clientX / window.innerWidth ) * 2 - 1;
-    var y =  - ( event.clientY / window.innerHeight ) * 2 + 1;
+    var x = ( event.clientX / $(".viewer1").width() ) * 2 - 1;
+    var y =  - ( event.clientY / $(".viewer1").height() ) * 2 + 1;
     var vector = new THREE.Vector3( x, y, 0.5 ).unproject(this.camera);
     this.raycaster.set(this.camera.position, vector.sub(this.camera.position).normalize());
     var nodes = this.raycaster.intersectObject( this.particles );

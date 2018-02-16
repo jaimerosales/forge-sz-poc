@@ -27,6 +27,7 @@
     <!-- Viewer production -->
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/three.min.js"></script>
     <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.min.js"></script>
+    <script>avp.ENABLE_DEBUG=true</script>
 
     <!-- The Viewer JS -->
     <script src="/js/oauth.js"></script>
@@ -36,9 +37,24 @@
 </head>
 
 <body>
-    <div id="viewerDiv"> </div><!-- /viewer -->
-    <div class ="logo" >
-        <img class="logo-size" src="./images/Parker.png" />
+    <div class="col-md-8">
+        <div class="viewer1">
+            <div id="viewerDiv"> </div><!-- /viewer -->
+            <div class ="logo" >
+                <img class="logo-size" src="./images/Parker.png" />
+            </div>
+        </div>
+
+        <div class="viewer2">
+            <div id="viewerDiv2"> </div><!-- /viewer -->
+        </div>
     </div>
+
+    <div class="col-md-4">
+        <div class="configIframe">
+
+        </div>
+    </div>
+
 </body>
 </html>
