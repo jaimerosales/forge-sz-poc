@@ -2,9 +2,9 @@
 function markup3d(viewer, options) {
     Autodesk.Viewing.Extension.call(this, viewer, options);
 
-    this.scale =
-        this.particleCount = 20;
-    this.size = 35.0;
+    this.scale;
+    this.particleCount = 20;
+    this.size = 40.0;
     this.particles;
     this.msgs = [];
     this.raycaster = new THREE.Raycaster;
