@@ -86,26 +86,28 @@ function onDocumentLoadSuccess(doc) {
     window.addEventListener("onPointClick", function(e){
 
         if (e.detail === 1){
-            // var url = "http://corpappstest.parker.com/corpapps/EConfigurator/Home?mfgDivision=687680&option=0&series=156%20SERIES%20HOSE%20ASSEMBLY";
-            // window.open(url);
+            //var url = "./parker-html/Engine/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20280%20Series%20_%20Parker%20NA.htm";
+            document.getElementById("myIframe").src = './parker-html/Engine/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20280%20Series%20_%20Parker%20NA.htm'
+            viewer.isolate(682)
+            viewer.fitToView();
             loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
         }
 
         if (e.detail === 2){
-            // var url = "http://ph.parker.com/us/en/high-pressure-aluminum-pumps-model-505";
-            // window.open(url);
-            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
+            document.getElementById("myIframe").src = './parker-html/Front/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20890%20Series%20_%20Parker%20NA.htm';
+            viewer.isolate(4598)
+            viewer.fitToView();
+            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9mcm9udC5vYmouemlw")
         }
 
         if (e.detail === 3){
-            // var url = "http://ph.parker.com/us/en/280-series-powershift-hydraulic-10-bolt-power-take-off-pto";
-            // window.open(url);
-            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9lbmdpbmUub2JqLnppcA")
+            document.getElementById("myIframe").src = './parker-html/Back/Aluminum%20Pumps%20–%20PGP505%20Series%20_%20Parker%20NA.htm';
+            viewer.isolate([3531, 3533])
+            viewer.fitToView();
+            loadViewer2("urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6cGFya2VyLXBvYy9iYWNrLm9iai56aXA")
         }
 
     }, false);
-
-    ///////////////USE ONLY ONE OPTION AT A TIME/////////////////////////
 
 
     //////////////////Viewer with Autodesk Toolbar///////////////////////
@@ -147,6 +149,7 @@ function loadViewer2(urn2) {
         viewer2 = new Autodesk.Viewing.Viewer3D(viewerDiv2);
         //////////////////////////////////////////////////////////////////////
         viewer2.start(svfUrl, modelOptions, onLoadModelSuccess, onLoadModelError)
+        viewer2.fitToView();
     },onDocumentLoadFailure);
 }
 

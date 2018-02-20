@@ -10,7 +10,7 @@
 }
 
 .logo-size{
-    width:75%;
+    width:50%;
 }
 
 .circle-node{
@@ -27,11 +27,26 @@
 }
 
 .viewer2 {
-    height: 44em;
+    height: 43em;
     overflow: hidden;
     position: relative;
 }
 
-.configIframe{
-    height: 87.5em;
+iframe{
+    height: 99%;
+    width:  104%;
+}
+
+.configIframe {
+    height: 86em;
+}
+
+.col-md-8{
+    margin-left: -15px;
+    margin-right: -30px;
+}
+
+.col-md-4{
+    height: 86.5em;
+    width: 53em;
 }
