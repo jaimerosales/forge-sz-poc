@@ -21,13 +21,13 @@
 }
 
 .viewer1 {
-    height: 43.5em;
+    height: 39em;
     overflow: hidden;
     position: relative;
 }
 
 .viewer2 {
-    height: 43em;
+    height: 38.5em;
     overflow: hidden;
     position: relative;
 }
@@ -38,7 +38,7 @@ iframe{
 }
 
 .configIframe {
-    height: 86em;
+    height: 78em;
 }
 
 .col-md-8{
