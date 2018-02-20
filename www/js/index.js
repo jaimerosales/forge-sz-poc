@@ -25,8 +25,6 @@ var options = {
 
 }
 
-var loadDocument = null;
-
 var data = {
     "Items": [{
         "markupId": 1,
@@ -60,8 +58,6 @@ Autodesk.Viewing.Initializer(options, function onInitialized() {
  */
 function onDocumentLoadSuccess(doc) {
 
-    // loadDocument = doc;
-
     // A document contains references to 3D and 2D viewables.
     var viewable = Autodesk.Viewing.Document.getSubItemsWithProperties(doc.getRootItem(), {
         'type': 'geometry'
@@ -86,7 +82,6 @@ function onDocumentLoadSuccess(doc) {
     window.addEventListener("onPointClick", function(e){
 
         if (e.detail === 1){
-            //var url = "./parker-html/Engine/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20280%20Series%20_%20Parker%20NA.htm";
             document.getElementById("myIframe").src = './parker-html/Engine/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20280%20Series%20_%20Parker%20NA.htm'
             viewer.isolate(682)
             viewer.fitToView();
@@ -195,37 +190,3 @@ function onGeometryLoadedHandler(event) {
         onGeometryLoadedHandler);
 
 }
-
-
-//
-// data = {
-// "Items": [{
-//     "x": 1100.37674052735037833,
-//     "y": -95.0107518497603,
-//     "z": -402.620531023927,
-//     "type": "RFI"
-// }, {
-//     "x": 101.95253612923999,
-//     "y": 1343.3121015846427,
-//     "z": 550.1132431164415,
-//     "type": "Issue",
-// }]
-// } ;
-//
-// window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
-
-
-
-// //
-// // Engine
-// data = {
-//     "Items": [{
-//         "x": 1100.37674052735037833,
-//         "y": -95.0107518497603,
-//         "z": -402.620531023927,
-//         "type": "RFI"
-//     }]
-// } ;
-// window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
-
-
