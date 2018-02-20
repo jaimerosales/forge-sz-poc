@@ -13,40 +13,39 @@
     width:50%;
 }
 
-.circle-node{
-    position: absolute;
-    top: 200px;
-    left: 300px;
-    z-index: 2;
-}
-
 .viewer1 {
-    height: 39em;
+    height: 50vh;
     overflow: hidden;
     position: relative;
 }
 
 .viewer2 {
-    height: 38.5em;
+    height: 50vh;
     overflow: hidden;
     position: relative;
 }
 
 iframe{
+    margin: 0;
+    padding: 0;
+    border: none;
     height: 99%;
-    width:  104%;
+    width:  100%;
 }
 
 .configIframe {
-    height: 78em;
+    height: 100vh;
+    width: 42vw;
+    margin-left: 8px;
 }
 
 .col-md-8{
     margin-left: -15px;
     margin-right: -31px;
+    height: 100vh;
+    width: 60vw;
 }
 
 .col-md-4{
-    height: 78em;
-    width: 48.5em;
+
 }

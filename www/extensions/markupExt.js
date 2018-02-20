@@ -4,7 +4,7 @@ function markup3d(viewer, options) {
 
     this.scale =
         this.particleCount = 20;
-    this.size = 900.0;
+    this.size = 50.0;
     this.particles;
     this.msgs = [];
     this.raycaster = new THREE.Raycaster;
@@ -22,7 +22,7 @@ function markup3d(viewer, options) {
         void main() {
             vColor = color;
             vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
-            gl_PointSize = size * ( size / (length(mvPosition.xyz) + 25.0) );
+            gl_PointSize = size;
             gl_Position = projectionMatrix * mvPosition;
         }
 	`
