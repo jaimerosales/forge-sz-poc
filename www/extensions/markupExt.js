@@ -13,7 +13,7 @@ function markup3d(viewer, options) {
     this.mouse = {x:0, y:0, button:0};
     this.raycaster = new THREE.Raycaster();
     this.camera = viewer.impl.camera;
-    this.raycaster.params.PointCloud.threshold = 30;
+    this.raycaster.params.PointCloud.threshold = 50;
 
 
     this.vertexShader = `
