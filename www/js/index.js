@@ -25,7 +25,7 @@ var options = {
 
 }
 
-var data = {
+var data1stview = {
     "Items": [{
         "markupId": 1,
         "x": 1100.37674052735037833,
@@ -80,6 +80,11 @@ function onDocumentLoadSuccess(doc) {
 
 
     window.addEventListener("onPointClick", function(e){
+
+        document.getElementById("viewerDivs").classList.add("col-md-8")
+        document.getElementById("threedviewer").classList.add("viewer1")
+
+        viewer.resize();
 
         if (e.detail === 1){
             document.getElementById("myIframe").src = './parker-html/Engine/PowerShift%20(Hydraulic)%2010-Bolt%20Power%20Take-Off%20(PTO)%20-%20280%20Series%20_%20Parker%20NA.htm'
@@ -182,8 +187,8 @@ function onLoadModelError(viewerErrorCode) {
  * Geometry Loader Listener
  */
 function onGeometryLoadedHandler(event) {
-    console.log("Geo loaded", data);
-    window.dispatchEvent(new CustomEvent('newData', {'detail': data}));
+   // console.log("Geo loaded", data);
+    window.dispatchEvent(new CustomEvent('newData', {'detail': data1stview}));
 
     viewer.removeEventListener(
         Autodesk.Viewing.GEOMETRY_LOADED_EVENT,
